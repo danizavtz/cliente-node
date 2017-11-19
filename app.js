@@ -8,7 +8,6 @@ var config = require('./config/env.config.json')[process.env.NODE_ENV || 'develo
 var app = express();
 app.disable('x-powered-by');
 app.configdb = config;
-console.log(config);
 cors({ credentials: true, origin: true });
 app.use(cors());
 app.use(bodyParser.json({ type: 'application/json' }));
@@ -19,6 +18,7 @@ app.locals.title = "Cliente";
 if (process.env.NODE_ENV !== 'test') {
   app.use(logger('dev'));
 }
+app.use('/', require('./server/index'));
 
 //após tentar casar todas as rotas a ultima rota que sobrou é not found
 app.get('*', function(req, res) {

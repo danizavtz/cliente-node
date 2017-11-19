@@ -4,8 +4,6 @@
   "description": "cliente equivalente em node da aplicação desenvolvida em django",
   "main": "app.js",
   "scripts": {
-    "createdb": "psql -U postgres -d login -a -f ./sql/create.sql",
-    "dropdb": "psql -U postgres -d login -a -f ./sql/drop.sql",
     "start": "nodemon ./bin/www",
     "lint": "./node_modules/.bin/eslint ./server/**/*.js",
     "test": "mocha --reporter spec test/",

@@ -1,0 +1,10 @@
+#!/usr/bin/env node
+var app = require('../app');
+var mysql = require('../mysql/db');
+mysql.initialize(app.configdb,function(err){
+  if(err){
+    throw err;
+  }
+  app.listen(3002)
+  console.log('Microsservice cliente listening');
+});

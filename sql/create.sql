@@ -1,0 +1,6 @@
+CREATE TABLE cliente (
+	id SERIAL,
+	login VARCHAR(100),
+	email VARCHAR(100) NOT NULL,
+	phone VARCHAR(15) NOT NULL
+);

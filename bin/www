@@ -1,10 +1,30 @@
-#!/usr/bin/env node
-var app = require('../app');
-var mysql = require('../mysql/db');
-mysql.initialize(app.configdb,function(err){
-  if(err){
-    throw err;
-  }
-  app.listen(3002)
-  console.log('Microsservice cliente listening');
+process.env.NODE_ENV = process.env.NODE_ENV ? process.env.NODE_ENV : 'development';
+const app = require('../app');
+const pg = require('../mysql/db');
+pg.initialize(app.configdb, (err) => {
+    if (err) {
+        throw err;
+    }
+    // if (process.env.NODE_ENV === 'development') {
+    //     const fs = require('fs');
+    //     const loadFixture = fs.readFileSync(__dirname + '/../sql/fixture.sql').toString();
+    //     pg.client.query(loadFixture, function(err, result) {
+    //         if (err) {
+    //             throw err;
+    //         }
+    //         console.log(result.rows);
+    //     });
+    // } else if (process.env.NODE_ENV === 'production') {
+    // 	const fs = require('fs');
+    //     const loadFixture = fs.readFileSync(__dirname + '/../sql/create.sql').toString();
+    //     pg.client.query(loadFixture, function(err, result) {
+    //         if (err) {
+    //             throw err;
+    //         }
+    //         console.log(result.rows);
+    //     });
+    // }
+    app.listen(app.configdb.PORT, function() {
+        console.log('Microsservice marketing listening at http://localhost:%s', app.configdb.PORT);
+    });
 });

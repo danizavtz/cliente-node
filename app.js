@@ -3,7 +3,7 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var expressValidator = require('express-validator');
-var config = require('./config/env.config.json')[process.env.NODE_ENV || 'development'];
+var config = require('./config/env.config')[process.env.NODE_ENV || 'development'];
 
 var app = express();
 app.disable('x-powered-by');

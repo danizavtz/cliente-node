@@ -1,11 +1,15 @@
-var mysql = exports;
-var mysqllib = require('mysql');
-mysql.initialize = function(dbconfig, cb){
-	var dbconf = mysqllib.createConnection(dbconfig);
-	dbconf.connect(function(err){
-		if(err) throw err;
-		console.log(dbconf);
-		mysql = dbconf;
-		cb()
-	});
+//jshint esversion: 6
+const pg = exports;
+const { Pool } = require('pg');
+
+pg.initialize = function(databaseUrl, cb) {
+    const pool = new Pool(databaseUrl);
+    pool.connect(function(err) {
+      if (err) {
+        return cb(err);
+      }
+      pg.client = pool;
+      return cb();
+    });
+
 };

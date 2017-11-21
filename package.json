@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon ./bin/www",
-    "create": "psql -U postgres -a -f ./sql/create.sql",
-    "drop": "psql -U postgres -a -f ./sql/drop.sql",
+    "create": "psql -U postgres -d clientes -a -f ./sql/create.sql",
+    "drop": "psql -U postgres -d clientes -a -f ./sql/drop.sql",
     "lint": "./node_modules/.bin/eslint ./server/**/*.js",
     "test": "mocha --reporter spec test/",
     "coverage": "istanbul cover _mocha -- --reporter progress ./test/"

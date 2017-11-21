@@ -29,7 +29,7 @@
       res.status(200).json(results.rows);
       res.end();
     } catch (e) {
-      return res.status(500).json({ errors: [{ param: undefined, msg: 'Não foi possível consultar clientes', value: undefined }] });
+      return res.status(500).json({ errors: [{ param: undefined, msg: 'Could not query cliente', value: undefined }] });
     }    
   };
 
@@ -37,8 +37,7 @@
   	let sql = 'INSERT INTO cliente(login,email,phone) VALUES ($1,$2,$3) RETURNING *';
   	db.client.query(sql,[req.body.login || null, req.body.email, req.body.phone], (err, result) => {
   		if(err){
-        console.log(err);
-  			return res.status(500).json({errors: ['Could not query cliente']});
+  			return res.status(500).json({ errors: [{ param: 'id', msg: 'Could not query cliente', value: req.params.id }] });
   		}
   		res.status(201).json(result.rows[0]);
   		res.end();
@@ -47,11 +46,11 @@
 
   exports.updateCliente = (req, res) => {
   	let sql = 'UPDATE cliente SET login = $1, email = $2, phone = $3 WHERE id = $4 RETURNING *';
-  	db.client.query(sql, [req.body.login, req.body.email, req.body.phone, req.params.id], (err, result) =>{
+  	db.client.query(sql, [req.body.login || req.cliente.login, req.body.email, req.body.phone, req.params.id], (err, result) =>{
   		if(err){
-  			return res.status(500).json({errors: ['Could not query cliente']});
+  			return res.status(500).json({ errors: [{ param: 'id', msg: 'Could not query cliente', value: req.params.id }] });
   		}
-  		res.status(200).json(results.rows[0]);
+  		res.status(200).json(result.rows[0]);
   		res.end();
   	})
   };
@@ -60,8 +59,7 @@
   	let sql = 'DELETE FROM cliente WHERE id = $1';
   	db.client.query(sql, [req.params.id], (err, result) =>{
   		if(err){ 
-        console.log(err);
-  			return res.status(500).json({errors: ['Could not query cliente']});
+  			return res.status(500).json({ errors: [{ param: 'id', msg: 'Could not query cliente', value: req.params.id }] });
   		}
   		res.status(204);
   		res.end();

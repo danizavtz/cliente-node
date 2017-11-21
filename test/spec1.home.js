@@ -6,8 +6,8 @@ var expect = require('chai').expect,
     server = app.listen(),
     api = supertest(server);
 
-describe('#HOME', function() {
-    describe('GET', function() {
+describe('#HOME', () => {
+    describe('GET', () => {
         it('Check get route does not exist', function(done) {
             api.get(url + 'test')
                 .set('Accept', 'application/json; charset=utf-8')

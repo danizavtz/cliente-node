@@ -2,9 +2,9 @@
 const pg = exports;
 const { Pool } = require('pg');
 
-pg.initialize = function(databaseUrl, cb) {
+pg.initialize = (databaseUrl, cb) => {
     const pool = new Pool(databaseUrl);
-    pool.connect(function(err) {
+    pool.connect( err => {
       if (err) {
         return cb(err);
       }

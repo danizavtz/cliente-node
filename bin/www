@@ -1,7 +1,7 @@
 process.env.NODE_ENV = process.env.NODE_ENV ? process.env.NODE_ENV : 'development';
 const app = require('../app');
 const pg = require('../mysql/db');
-pg.initialize(app.configdb, (err) => {
+pg.initialize(app.configdb, err => {
     if (err) {
         throw err;
     }
@@ -24,7 +24,7 @@ pg.initialize(app.configdb, (err) => {
     //         console.log(result.rows);
     //     });
     // }
-    app.listen(app.configdb.PORT, function() {
+    app.listen(app.configdb.PORT, () => {
         console.log('Microsservice marketing listening at http://localhost:%s', app.configdb.PORT);
     });
 });

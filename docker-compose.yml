@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  cliente-node:
+    build:
+      context: .
+    ports:
+      - "3005:3005"
+    depends_on:
+      - pgdb
+  pgdb:
+    restart: always
+    image: postgres:10.1-alpine
+    ports:
+      - "5433:5432"
+    environment:
+      - DEBUG=false
+      - PG_PASSWORD=postgres
+      - DB_NAME=clientes

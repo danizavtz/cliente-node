@@ -8,8 +8,8 @@
     "create": "psql -U postgres -d clientes -a -f ./sql/create.sql",
     "drop": "psql -U postgres -d clientes -a -f ./sql/drop.sql",
     "lint": "./node_modules/.bin/eslint ./server/**/*.js",
-    "test": "mocha --reporter spec test/",
-    "coverage": "istanbul cover _mocha -- --reporter progress ./test/"
+    "test": "mocha --reporter spec test/ --exit",
+    "coverage": "istanbul cover _mocha -- --reporter progress ./test/ --exit"
   },
   "repository": {
     "type": "git",
@@ -33,7 +33,8 @@
     "express-validator": "^4.3.0",
     "morgan": "^1.9.0",
     "mysql": "^2.15.0",
-    "nodemon": "^1.13.3"
+    "nodemon": "^1.13.3",
+    "pg": "^7.12.1"
   },
   "devDependencies": {
     "chai": "^4.1.2",

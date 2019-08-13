@@ -1,5 +1,5 @@
 process.env.NODE_ENV = 'test';
-var expect = require('chai').expect,
+const expect = require('chai').expect,
     supertest = require('supertest'),
     app = require('../app'),
     url = '/',
@@ -8,7 +8,7 @@ var expect = require('chai').expect,
 
 describe('#HOME', () => {
     describe('GET', () => {
-        it('Check get route does not exist', function(done) {
+        it('Check get route does not exist', (done) => {
             api.get(url + 'test')
                 .set('Accept', 'application/json; charset=utf-8')
                 .expect(404)
@@ -17,7 +17,7 @@ describe('#HOME', () => {
                     done();
                 });
         });
-        it('Check undefined route does not exist', function(done) {
+        it('Check undefined route does not exist', (done) => {
             api.get(url + undefined)
                 .set('Accept', 'application/json; charset=utf-8')
                 .expect(404)
@@ -26,7 +26,7 @@ describe('#HOME', () => {
                     done();
                 });
         });
-        it('Check home page', function(done) {
+        it('Check home page', (done) => {
             api.get(url)
                 .set('Accept', 'application/json; charset=utf-8')
                 .expect(200)

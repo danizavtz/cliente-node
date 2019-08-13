@@ -1,5 +1,3 @@
-(function() {
-  'use strict';
   const db = require('../../mysql/db');
 
 
@@ -65,5 +63,3 @@
       return res.status(500).json({ errors: [{ param: "", msg: e.detail, value: "" }] });
     }
   };
-
-})();

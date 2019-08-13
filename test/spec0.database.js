@@ -1,6 +1,5 @@
 process.env.NODE_ENV = 'test';
-var expect = require('chai').expect,
-    supertest = require('supertest'),
+const expect = require('chai').expect,
     pg = require('../mysql/db');
 
 describe('#DATABASE', () => {

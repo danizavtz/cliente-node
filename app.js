@@ -1,11 +1,11 @@
-var express = require('express');
-var logger = require('morgan');
-var bodyParser = require('body-parser');
-var cors = require('cors');
-var expressValidator = require('express-validator');
-var config = require('./config/env.config')[process.env.NODE_ENV || 'development'];
+const express = require('express');
+const logger = require('morgan');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const expressValidator = require('express-validator');
+const config = require('./config/env.config')[process.env.NODE_ENV || 'development'];
 
-var app = express();
+const app = express();
 app.disable('x-powered-by');
 app.configdb = config;
 cors({ credentials: true, origin: true });

@@ -1,5 +1,5 @@
 process.env.NODE_ENV = 'test';
-var expect = require('chai').expect,
+const expect = require('chai').expect,
     supertest = require('supertest'),
     app = require('../app'),
     pg = require('../mysql/db'),
@@ -7,10 +7,10 @@ var expect = require('chai').expect,
     _url = '/clientes/',
     server = app.listen(),
     api = supertest(server);
-var sql = fs.readFileSync(__dirname + '/../sql/test.sql').toString();
+const sql = fs.readFileSync(__dirname + '/../sql/test.sql').toString();
 
-describe('#CLIENTE', function() {
-    before(function(done) {
+describe('#CLIENTE', () => {
+    before((done) => {
         pg.initialize(app.configdb, err => {
             if (err) {
                 throw err;

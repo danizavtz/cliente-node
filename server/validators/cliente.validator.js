@@ -1,5 +1,3 @@
-(function() {
-'use strict';
 	  exports.validateCliente = (req, res, next) => {
         req.checkBody('email', 'email is required').isEmail();
         req.checkBody('phone', 'phone is required').isInt();
@@ -10,5 +8,3 @@
         return next();
         });
     };
-
-}());

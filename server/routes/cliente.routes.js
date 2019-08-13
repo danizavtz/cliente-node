@@ -1,6 +1,3 @@
-(function() {
-  'use strict';
-
   const express = require('express');
   const router = express.Router();
   const clienteController = require('../controllers/cliente.controller');
@@ -13,4 +10,3 @@
   router.delete('/clientes/:id([0-9]+)', clienteController.lookupCliente, clienteController.deleteCliente);
 
   module.exports = router;
-}());

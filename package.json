@@ -9,7 +9,7 @@
     "drop": "psql -U postgres -d clientes -a -f ./sql/drop.sql",
     "lint": "./node_modules/.bin/eslint ./server/**/*.js",
     "test": "mocha --reporter spec test/ --exit",
-    "coverage": "istanbul cover _mocha -- --reporter progress ./test/ --exit"
+    "coverage": "nyc mocha --exit --reporter progress ./test/"
   },
   "repository": {
     "type": "git",
@@ -33,12 +33,12 @@
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.4",
+    "nyc": "^15.1.0",
     "pg": "^8.2.0"
   },
   "devDependencies": {
     "chai": "^4.2.0",
     "eslint": "^7.3.1",
-    "istanbul": "^0.4.5",
     "mocha": "^8.0.1",
     "supertest": "^4.0.2"
   }

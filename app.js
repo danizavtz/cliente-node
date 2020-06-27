@@ -1,6 +1,5 @@
 const express = require('express');
 const logger = require('morgan');
-const bodyParser = require('body-parser');
 const cors = require('cors');
 const expressValidator = require('express-validator');
 const config = require('./config/env.config')[process.env.NODE_ENV || 'development'];
@@ -10,8 +9,7 @@ app.disable('x-powered-by');
 app.configdb = config;
 cors({ credentials: true, origin: true });
 app.use(cors());
-app.use(bodyParser.json({ type: 'application/json' }));
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(expressValidator());
 
 app.locals.title = "Cliente";
